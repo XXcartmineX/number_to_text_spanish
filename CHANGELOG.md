@@ -1,3 +1,3 @@
-## 0.0.1
+## 1.0.0
 
-* TODO: Describe initial release.
+#  Convierte números del 1 al 99999 en su representación textual en español.

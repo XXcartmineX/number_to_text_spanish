@@ -1,7 +1,7 @@
 name: number_to_text_spanish
 description: "A new Flutter package project."
 version: 1.0.0
-homepage:
+homepage: https://github.com/XXcartmineX/number_to_text_spanish
 
 environment:
   sdk: '>=3.4.0 <4.0.0'
