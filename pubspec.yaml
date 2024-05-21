@@ -1,5 +1,5 @@
 name: number_to_text_spanish
-description: "A new Flutter package project."
+description: " Convierte números del 1 al 99999 en su representación textual en español"
 version: 1.0.0
 homepage: https://github.com/XXcartmineX/number_to_text_spanish
 
