@@ -1,5 +1,10 @@
+/// Biblioteca para convertir números a texto en español.
 library number_to_text_spanish;
 
+/// Clase que proporciona funcionalidad para convertir números a palabras en español.
+///
+/// Permite convertir números enteros del 0 al 999,999 a su representación textual
+/// en español, siguiendo las reglas gramaticales del idioma.
 class NumberToWordsES {
   static const Map<int, String> _units = {
     1: 'uno',
@@ -62,7 +67,19 @@ class NumberToWordsES {
     9: 'novecientos',
   };
 
-  // Modificamos la firma para aceptar dynamic y así poder validar correctamente
+  /// Convierte un número entero a su representación textual en español.
+  ///
+  /// Acepta números enteros desde 0 hasta 999,999.
+  ///
+  /// Ejemplos:
+  /// ```dart
+  /// NumberToWordsES.numberToWords(21); // returns 'veintiuno'
+  /// NumberToWordsES.numberToWords(101); // returns 'ciento uno'
+  /// ```
+  ///
+  /// Throws:
+  /// - [Exception] si el número es negativo
+  /// - [Exception] si el número es mayor o igual a 1,000,000
   static String numberToWords(dynamic number) {
     // Validamos que el valor no sea nulo
     if (number == null) {
