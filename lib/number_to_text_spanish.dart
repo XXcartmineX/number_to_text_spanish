@@ -68,20 +68,20 @@ class NumberToWordsES {
     if (number == null) {
       throw Exception('Valor nulo no permitido');
     }
-    
+
     // Validamos que el valor sea un entero
     if (number is! int) {
       throw Exception('Solo se permiten números enteros');
     }
-    
+
     if (number < 0) {
       throw Exception('No se admiten números negativos');
     }
-    
+
     if (number >= 1000000) {
       throw Exception('Número fuera de rango');
     }
-    
+
     if (number == 0) {
       return 'cero';
     } else if (number < 10) {
@@ -105,11 +105,11 @@ class NumberToWordsES {
     } else if (number < 1000000) {
       int thousandsPart = number ~/ 1000;
       int remainder = number % 1000;
-      
+
       if (thousandsPart == 1) {
         return 'mil${remainder > 0 ? ' ${numberToWords(remainder)}' : ''}';
       }
-      
+
       return '${numberToWords(thousandsPart)} mil${remainder > 0 ? ' ${numberToWords(remainder)}' : ''}';
     } else {
       throw Exception('Número fuera de rango');

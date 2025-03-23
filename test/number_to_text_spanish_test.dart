@@ -39,7 +39,8 @@ void main() {
       expect(NumberToWordsES.numberToWords(2001), 'dos mil uno');
       expect(NumberToWordsES.numberToWords(10000), 'diez mil');
       expect(NumberToWordsES.numberToWords(100000), 'cien mil');
-      expect(NumberToWordsES.numberToWords(999999), 'novecientos noventa y nueve mil novecientos noventa y nueve');
+      expect(NumberToWordsES.numberToWords(999999),
+          'novecientos noventa y nueve mil novecientos noventa y nueve');
     });
   });
 
@@ -59,9 +60,9 @@ void main() {
       );
     });
   });
-  
+
   // Nuevos tests para edge cases
-  
+
   group('Casos especiales en la gramática española', () {
     test('maneja correctamente los números del 21 al 29', () {
       expect(NumberToWordsES.numberToWords(21), 'veintiuno');
@@ -69,13 +70,13 @@ void main() {
       expect(NumberToWordsES.numberToWords(25), 'veinticinco');
       expect(NumberToWordsES.numberToWords(29), 'veintinueve');
     });
-    
+
     test('maneja correctamente las centenas irregulares', () {
       expect(NumberToWordsES.numberToWords(500), 'quinientos');
       expect(NumberToWordsES.numberToWords(700), 'setecientos');
       expect(NumberToWordsES.numberToWords(900), 'novecientos');
     });
-    
+
     test('maneja correctamente el uso de "y" en decenas', () {
       expect(NumberToWordsES.numberToWords(31), 'treinta y uno');
       expect(NumberToWordsES.numberToWords(42), 'cuarenta y dos');
@@ -86,13 +87,15 @@ void main() {
       expect(NumberToWordsES.numberToWords(24), 'veinticuatro');
     });
   });
-  
+
   group('Casos límite', () {
     test('maneja valores cercanos a los límites', () {
-      expect(NumberToWordsES.numberToWords(999998), 'novecientos noventa y nueve mil novecientos noventa y ocho');
-      expect(NumberToWordsES.numberToWords(999999), 'novecientos noventa y nueve mil novecientos noventa y nueve');
+      expect(NumberToWordsES.numberToWords(999998),
+          'novecientos noventa y nueve mil novecientos noventa y ocho');
+      expect(NumberToWordsES.numberToWords(999999),
+          'novecientos noventa y nueve mil novecientos noventa y nueve');
     });
-    
+
     test('maneja casos especiales de miles', () {
       expect(NumberToWordsES.numberToWords(1100), 'mil cien');
       expect(NumberToWordsES.numberToWords(1101), 'mil ciento uno');
@@ -100,7 +103,7 @@ void main() {
       expect(NumberToWordsES.numberToWords(10500), 'diez mil quinientos');
     });
   });
-  
+
   group('Entrada inválida', () {
     test('maneja valores nulos o undefined', () {
       expect(
@@ -108,7 +111,7 @@ void main() {
         throwsException,
       );
     });
-    
+
     test('maneja tipos incorrectos', () {
       expect(
         () => NumberToWordsES.numberToWords('string' as dynamic),
@@ -120,16 +123,17 @@ void main() {
       );
     });
   });
-  
+
   group('Casos específicos conocidos por causar problemas', () {
-    test('maneja correctamente los números con uno en diferentes posiciones', () {
+    test('maneja correctamente los números con uno en diferentes posiciones',
+        () {
       expect(NumberToWordsES.numberToWords(1), 'uno');
       expect(NumberToWordsES.numberToWords(21), 'veintiuno');
       expect(NumberToWordsES.numberToWords(31), 'treinta y uno');
       expect(NumberToWordsES.numberToWords(101), 'ciento uno');
       expect(NumberToWordsES.numberToWords(1001), 'mil uno');
     });
-    
+
     test('maneja correctamente valores que requieren cambios de género', () {
       expect(NumberToWordsES.numberToWords(21), 'veintiuno');
       expect(NumberToWordsES.numberToWords(31), 'treinta y uno');
