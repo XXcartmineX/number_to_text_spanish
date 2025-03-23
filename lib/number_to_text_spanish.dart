@@ -26,6 +26,19 @@ class NumberToWordsES {
     19: 'diecinueve',
   };
 
+  // Mapa para los números del 21 al 29
+  static const Map<int, String> _twenties = {
+    21: 'veintiuno',
+    22: 'veintidós',
+    23: 'veintitrés',
+    24: 'veinticuatro',
+    25: 'veinticinco',
+    26: 'veintiséis',
+    27: 'veintisiete',
+    28: 'veintiocho',
+    29: 'veintinueve',
+  };
+
   static const Map<int, String> _tens = {
     20: 'veinte',
     30: 'treinta',
@@ -49,9 +62,24 @@ class NumberToWordsES {
     9: 'novecientos',
   };
 
-  static String numberToWords(int number) {
+  // Modificamos la firma para aceptar dynamic y así poder validar correctamente
+  static String numberToWords(dynamic number) {
+    // Validamos que el valor no sea nulo
+    if (number == null) {
+      throw Exception('Valor nulo no permitido');
+    }
+    
+    // Validamos que el valor sea un entero
+    if (number is! int) {
+      throw Exception('Solo se permiten números enteros');
+    }
+    
     if (number < 0) {
       throw Exception('No se admiten números negativos');
+    }
+    
+    if (number >= 1000000) {
+      throw Exception('Número fuera de rango');
     }
     
     if (number == 0) {
@@ -60,6 +88,9 @@ class NumberToWordsES {
       return _units[number] ?? '';
     } else if (number < 20) {
       return _teens[number] ?? '';
+    } else if (number >= 21 && number <= 29) {
+      // Manejar especialmente los números del 21 al 29
+      return _twenties[number] ?? '';
     } else if (number < 100) {
       int tensDigit = number ~/ 10;
       int unitsDigit = number % 10;
@@ -71,24 +102,17 @@ class NumberToWordsES {
       int hundredsDigit = number ~/ 100;
       int rest = number % 100;
       return '${_hundreds[hundredsDigit]}${rest > 0 ? ' ${numberToWords(rest)}' : ''}';
-    } else if (number < 10000) {
-      int thousandsDigit = number ~/ 1000;
-      int rest = number % 1000;
-      if (thousandsDigit == 1 && rest == 0) {
-        return 'mil';
-      }
-      return '${number == 1000 ? "mil" : "${_units[thousandsDigit]} mil"}${rest > 0 ? ' ${numberToWords(rest)}' : ''}';
-    } else if (number < 100000) {
-      int tensThousandsDigit = number ~/ 10000;
-      int rest = number % 10000;
-      if (number < 20000) {
-        return numberToWords(tensThousandsDigit * 10000 + rest);
-      }
+    } else if (number < 1000000) {
       int thousandsPart = number ~/ 1000;
       int remainder = number % 1000;
+      
+      if (thousandsPart == 1) {
+        return 'mil${remainder > 0 ? ' ${numberToWords(remainder)}' : ''}';
+      }
+      
       return '${numberToWords(thousandsPart)} mil${remainder > 0 ? ' ${numberToWords(remainder)}' : ''}';
     } else {
-      throw Exception('Number out of range');
+      throw Exception('Número fuera de rango');
     }
   }
 }
