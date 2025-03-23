@@ -50,6 +50,10 @@ class NumberToWordsES {
   };
 
   static String numberToWords(int number) {
+    if (number < 0) {
+      throw Exception('No se admiten números negativos');
+    }
+    
     if (number == 0) {
       return 'cero';
     } else if (number < 10) {
@@ -59,21 +63,21 @@ class NumberToWordsES {
     } else if (number < 100) {
       int tensDigit = number ~/ 10;
       int unitsDigit = number % 10;
-      return '${_tens[tensDigit * 10] ?? ''}${unitsDigit > 0 ? ' y ' + (_units[unitsDigit] ?? '') : ''}';
+      return '${_tens[tensDigit * 10]}${unitsDigit > 0 ? ' y ${_units[unitsDigit]}' : ''}';
     } else if (number < 1000) {
       if (number == 100) {
         return 'cien';
       }
       int hundredsDigit = number ~/ 100;
       int rest = number % 100;
-      return '${_hundreds[hundredsDigit] ?? ''}${rest > 0 ? ' ' + numberToWords(rest) : ''}';
+      return '${_hundreds[hundredsDigit]}${rest > 0 ? ' ${numberToWords(rest)}' : ''}';
     } else if (number < 10000) {
       int thousandsDigit = number ~/ 1000;
       int rest = number % 1000;
       if (thousandsDigit == 1 && rest == 0) {
         return 'mil';
       }
-      return '${number == 1000 ? "mil" : _units[thousandsDigit]! + " mil"}${rest > 0 ? ' ' + numberToWords(rest) : ''}';
+      return '${number == 1000 ? "mil" : "${_units[thousandsDigit]} mil"}${rest > 0 ? ' ${numberToWords(rest)}' : ''}';
     } else if (number < 100000) {
       int tensThousandsDigit = number ~/ 10000;
       int rest = number % 10000;
@@ -82,7 +86,7 @@ class NumberToWordsES {
       }
       int thousandsPart = number ~/ 1000;
       int remainder = number % 1000;
-      return '${numberToWords(thousandsPart)} mil${remainder > 0 ? ' ' + numberToWords(remainder) : ''}';
+      return '${numberToWords(thousandsPart)} mil${remainder > 0 ? ' ${numberToWords(remainder)}' : ''}';
     } else {
       throw Exception('Number out of range');
     }

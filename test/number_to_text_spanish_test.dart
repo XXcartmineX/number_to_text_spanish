@@ -7,4 +7,12 @@ void main() {
     expect(NumberToWordsES.numberToWords(100), 'cien');
     expect(NumberToWordsES.numberToWords(1000), 'mil');
   });
+
+  test('maneja cero y números negativos', () {
+    expect(NumberToWordsES.numberToWords(0), 'cero');
+    expect(
+      () => NumberToWordsES.numberToWords(-1),
+      throwsException,
+    );
+  });
 }
