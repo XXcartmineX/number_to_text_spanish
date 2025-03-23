@@ -1,6 +1,6 @@
 name: number_to_text_spanish
 description: "Convierte números del 1 al 99999 en su representación textual en español"
-version: 1.0.1
+version: 1.1.0
 homepage: https://github.com/XXcartmineX/number_to_text_spanish
 
 environment:

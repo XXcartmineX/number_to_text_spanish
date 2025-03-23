@@ -1,4 +1,4 @@
-## 1.0.1
+## 1.1.0
 
 * Mejora en el sistema de tipos: Aprovechamiento del sistema de tipos de Dart para manejo de errores
 * Eliminación de validaciones redundantes de tipos
