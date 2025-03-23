@@ -1,3 +1,8 @@
+## 1.1.1
+
+* Mejora en la documentación de funciones siguiendo los guidelines de Dart
+* Mejora en el formato del código
+
 ## 1.1.0
 
 * Mejora en el sistema de tipos: Aprovechamiento del sistema de tipos de Dart para manejo de errores

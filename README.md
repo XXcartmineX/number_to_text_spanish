@@ -13,7 +13,7 @@ Para comenzar a usar el paquete, asegúrate de tener Dart y Flutter configurados
 
 ```yaml
 dependencies:
-  number_to_text_spanish: ^1.1.0
+  number_to_text_spanish: ^1.1.1
 ```
 
 ## Usage
